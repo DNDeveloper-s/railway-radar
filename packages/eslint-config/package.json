@@ -1,0 +1,9 @@
+{
+  "name": "@railway-radar/eslint-config",
+  "version": "0.0.0",
+  "private": true,
+  "dependencies": {
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-react": "^7.33.2"
+  }
+}

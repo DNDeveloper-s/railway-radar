@@ -1,0 +1,62 @@
+[
+  {
+    "id": "uuid-12951",
+    "trainNumber": "12951",
+    "trainName": "Mumbai Central - New Delhi Rajdhani Express",
+    "sourceStation": "MMCT",
+    "destinationStation": "NDLS",
+    "status": "ON_TIME",
+    "currentLocation": {
+      "latitude": 23.2599,
+      "longitude": 77.4126
+    },
+    "route": [
+      {
+        "stationCode": "MMCT",
+        "stationName": "Mumbai Central",
+        "scheduledArrival": "17:00",
+        "scheduledDeparture": "17:00",
+        "haltTimeMinutes": 0,
+        "distanceFromSource": 0
+      },
+      {
+        "stationCode": "ST",
+        "stationName": "Surat",
+        "scheduledArrival": "19:43",
+        "scheduledDeparture": "19:48",
+        "haltTimeMinutes": 5,
+        "distanceFromSource": 263
+      }
+    ]
+  },
+  {
+    "id": "uuid-22436",
+    "trainNumber": "22436",
+    "trainName": "New Delhi - Varanasi Vande Bharat Express",
+    "sourceStation": "NDLS",
+    "destinationStation": "BSB",
+    "status": "DELAYED",
+    "currentLocation": {
+      "latitude": 26.8467,
+      "longitude": 80.9462
+    },
+    "route": [
+      {
+        "stationCode": "NDLS",
+        "stationName": "New Delhi",
+        "scheduledArrival": "06:00",
+        "scheduledDeparture": "06:00",
+        "haltTimeMinutes": 0,
+        "distanceFromSource": 0
+      },
+      {
+        "stationCode": "CNB",
+        "stationName": "Kanpur Central",
+        "scheduledArrival": "10:08",
+        "scheduledDeparture": "10:10",
+        "haltTimeMinutes": 2,
+        "distanceFromSource": 440
+      }
+    ]
+  }
+]
