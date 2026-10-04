@@ -16,7 +16,7 @@ jobs:
       - name: Install pnpm
         uses: pnpm/action-setup@v4
         with:
-          package_json_file: 'package.json'
+          version: 12.9.1
 
       - name: Setup Node.js
         uses: actions/setup-node@v4

@@ -30,3 +30,11 @@ yarn-error.log*
 
 # turbo
 .turbo
+
+# Python virtual environment
+.venv/
+venv/
+__pycache__/
+
+# Large static seed data (Keep the folder, ignore the files)
+services/py-engine/data_seed/*.json
