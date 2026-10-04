@@ -1,0 +1,46 @@
+{
+  "success": true,
+  "data": {
+    "trainInfo": {
+      "train_no": "12301",
+      "train_name": "HOWRAH RAJDHANI",
+      "from_stn_name": "NEW DELHI",
+      "from_stn_code": "NDLS",
+      "to_stn_name": "HOWRAH JN",
+      "to_stn_code": "HWH",
+      "from_time": "17:00",
+      "to_time": "09:55",
+      "travel_time": "16:55 hrs",
+      "running_days": "1111111",
+      "type": "RAJDHANI"
+    },
+    "route": [
+      {
+        "stnCode": "NDLS",
+        "stnName": "NEW DELHI",
+        "arrival": "--",
+        "departure": "17:00",
+        "halt": "0 min",
+        "distance": "0",
+        "day": "1",
+        "coordinates": {
+          "latitude": 28.6431,
+          "longitude": 77.2201
+        }
+      },
+      {
+        "stnCode": "CNB",
+        "stnName": "KANPUR CENTRAL",
+        "arrival": "21:32",
+        "departure": "21:37",
+        "halt": "5 min",
+        "distance": "440",
+        "day": "1",
+        "coordinates": {
+          "latitude": 26.4547,
+          "longitude": 80.3506
+        }
+      }
+    ]
+  }
+}
