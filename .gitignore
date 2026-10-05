@@ -38,3 +38,6 @@ __pycache__/
 
 # Large static seed data (Keep the folder, ignore the files)
 services/py-engine/data_seed/*.json
+
+next-env.d.ts
+*.tsbuildinfo
