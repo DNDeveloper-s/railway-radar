@@ -41,3 +41,4 @@ services/py-engine/data_seed/*.json
 
 next-env.d.ts
 *.tsbuildinfo
+.jiraskillrc
