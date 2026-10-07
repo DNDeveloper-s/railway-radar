@@ -1,4 +1,4 @@
-@AGENTS.md
+@apps/web/AGENTS.md
 
 # Agent Reference Document: Railway Radar Enterprise Architecture
 
