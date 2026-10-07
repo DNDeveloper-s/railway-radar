@@ -57,3 +57,4 @@ The same command runs on GitHub and must pass before a merge.
 - Start with the page "Working Agreement".
 - Stuck for more than 30 minutes? Ask. Comment on the ticket with the exact
   command you ran and the exact error text.
+  
