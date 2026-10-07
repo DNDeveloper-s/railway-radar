@@ -1,20 +1,15 @@
-pnpm test
-#!/usr/bin/env sh
-. "$(dirname -- "$0")/_/husky.sh"
+echo "Pre-push check: lockfile, lint, typecheck, tests"
 
-echo "==================================================="
-echo "🛡️ RUNNING LOCAL QUALITY GATE BEFORE PUSH"
-echo "==================================================="
-
-# 1. Check for a broken lockfile
-echo "Checking lockfile integrity..."
-pnpm install --frozen-lockfile || { 
-  echo "❌ Lockfile is broken or out of sync. Run 'pnpm install' to fix it."
-  exit 1 
+# 1. The lockfile must match package.json
+pnpm install --frozen-lockfile || {
+  echo "The lockfile is out of sync. Run 'pnpm install' and commit pnpm-lock.yaml."
+  exit 1
 }
 
-# 2. Run the monorepo checks (Replace with your actual CI script if different)
-# echo "Running lint and typechecks..."
-# pnpm run lint || { echo "❌ Linting failed."; exit 1; }
+# 2. The same checks as the pull request check on GitHub
+pnpm turbo run lint typecheck test || {
+  echo "A check failed. Fix it before pushing (see the output above)."
+  exit 1
+}
 
-echo "✅ All checks passed. Pushing to GitHub..."
+echo "All checks passed."
