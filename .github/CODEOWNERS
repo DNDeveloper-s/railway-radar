@@ -1,0 +1,10 @@
+# Configuration and tooling: Saurabh writes, Suraj reviews
+/.github/                           @DNDeveloper-s @JustLookon
+/.husky/                            @DNDeveloper-s @JustLookon
+/turbo.json                         @DNDeveloper-s @JustLookon
+/package.json                       @DNDeveloper-s @JustLookon
+/pnpm-workspace.yaml                @DNDeveloper-s @JustLookon
+
+# Shared contracts: Saurabh plus the person who works with them most
+/apps/web/src/types/                @DNDeveloper-s @pushpa67lp-dotcom
+/services/py-engine/app/models.py   @DNDeveloper-s @JustLookon
