@@ -1,0 +1,10 @@
+#!/usr/bin/env sh
+first_line=$(head -n 1 "$1")
+case "$first_line" in
+  SCRUM-[0-9]*" "*) exit 0 ;;
+  Merge\ *|Revert\ *) exit 0 ;;
+esac
+echo "Commit message must start with a Jira ticket key, for example:"
+echo "  SCRUM-26 Add Mapbox env template"
+echo "Copy the message from the Development panel of the ticket in Jira."
+exit 1
