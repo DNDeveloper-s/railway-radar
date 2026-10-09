@@ -1,21 +1,32 @@
+"""Pydantic models for the RailKit live-train response.
+
+This file mirrors RailKit's response only. The shape that the web app receives is a
+different set of models.
+"""
+
 from pydantic import BaseModel
 from typing import List, Optional
 
-class CoordinateInfo(BaseModel):
-    lat: float
-    lng: float
 
 class RouteCoordinate(BaseModel):
     lat: float
     lon: float
+
+
+class StationPoint(BaseModel):
+    code: str
+    name: str
+    lat: float
+    lng: float
+
 
 class TrainInfo(BaseModel):
     number: str
     name: str
     type: str
     category: str
-    source: CoordinateInfo
-    destination: CoordinateInfo
+    source: StationPoint
+    destination: StationPoint
     runDays: List[str]
     distance: float
     duration: int
@@ -24,11 +35,13 @@ class TrainInfo(BaseModel):
     coachPosition: str
     rakeType: str
 
+
 class StationBrief(BaseModel):
     sequence: int
     stnCode: str
     stnName: str
     distance: Optional[float] = None
+
 
 class CurrentLocation(BaseModel):
     sequence: int
@@ -41,10 +54,12 @@ class CurrentLocation(BaseModel):
     distanceFromLastStationKm: float
     delayMinutes: int
 
+
 class Timing(BaseModel):
     scheduled: str
     actual: Optional[str] = None
     delay: Optional[int] = None
+
 
 class RoutePoint(BaseModel):
     sequence: int
@@ -59,6 +74,7 @@ class RoutePoint(BaseModel):
     arrival: Timing
     departure: Timing
 
+
 class LiveTrainData(BaseModel):
     startDate: str
     lastUpdatedAt: str
@@ -72,7 +88,7 @@ class LiveTrainData(BaseModel):
     delayMinutes: int
     route: List[RoutePoint]
 
+
 class RailKitResponse(BaseModel):
     success: bool
     data: LiveTrainData
-    
