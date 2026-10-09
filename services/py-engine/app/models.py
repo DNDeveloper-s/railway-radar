@@ -75,3 +75,4 @@ class LiveTrainData(BaseModel):
 class RailKitResponse(BaseModel):
     success: bool
     data: LiveTrainData
+    
