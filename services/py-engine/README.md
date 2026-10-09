@@ -56,7 +56,17 @@ It should print `ok`.
 
 ## Running the server
 
-Not available yet. The FastAPI server and its run command are added by SCRUM-8; this section will be filled in then.
+From `services/py-engine`, with the virtual environment active:
+
+```
+uvicorn app.main:app --reload --port 8000
+```
+
+Then open http://localhost:8000/health (it shows `{"status":"ok"}`) and http://localhost:8000/docs (interactive documentation). Press Ctrl+C to stop. `--reload` restarts the server when you save a file; use it only on your laptop.
+
+## Running the tests
+
+`pytest` is not in `requirements.txt` yet. Install it in your virtual environment with `pip install pytest`, then run `pytest` from `services/py-engine`.
 
 ## Rules for this folder
 
