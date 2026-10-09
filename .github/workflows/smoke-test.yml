@@ -30,4 +30,4 @@ jobs:
             -H "x-vercel-protection-bypass: $BYPASS" "$URL")
           echo "HTTP $code"
           test "$code" = "200"
-          grep -q "Railway Radar" page.html
+          grep -q "This text is not on the page" page.html
