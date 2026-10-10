@@ -1,0 +1,8 @@
+{
+  "success": true,
+  "data": [
+    { "train_no": "12301", "train_name": "HOWRAH RAJDHANI" },
+    { "train_no": "12951", "train_name": "MUMBAI RAJDHANI" },
+    { "train_no": "22691", "train_name": "BENGALURU RAJDHANI" }
+  ]
+}
