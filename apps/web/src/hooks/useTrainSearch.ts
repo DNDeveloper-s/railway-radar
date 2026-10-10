@@ -5,14 +5,14 @@ interface Train {
   train_name: string;
 }
 
-export function filterTrains(trains: Train[], query: string) {
-  // filtering logic
+export function filterTrains(trains: Train[], query: string): Train[] {
+  // Normalize the query to support case-insensitive matching.
   const filteredQuery = query.trim().toLowerCase();
-
+  // Return no results when the search query is empty.
   if (filteredQuery === "") {
     return [];
   }
-  const searchedTrains = trains
+  return trains
     .filter((train) => {
       return (
         train.train_no.trim().toLowerCase().includes(filteredQuery) ||
@@ -20,11 +20,8 @@ export function filterTrains(trains: Train[], query: string) {
       );
     })
     .slice(0, 8);
-  return searchedTrains;
 }
 
 export function useTrainSearch(query: string) {
-  //hook logic
-  const result = filterTrains(mock_search_trains.data, query);
-  return result;
+  return filterTrains(mock_search_trains.data, query);
 }
