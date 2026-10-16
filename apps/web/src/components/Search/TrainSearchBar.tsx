@@ -2,15 +2,20 @@
 
 import useDebounce from "@/hooks/useDebounce";
 import { useState } from "react";
+import type React from "react";
 
+type Train = {
+  train_name: string;
+  train_no: string;
+};
 const TrainSearchBar = () => {
   const [search, setSearch] = useState("");
 
   const [selectIndex, setSelectIndex] = useState(-1);
 
-  const trainData = [];
+  const trainData: Train[] = [];
 
-  const keyDown = (e) => {
+  const keyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (trainData.length === 0) return;
 
     if (e.key === "ArrowDown") {
