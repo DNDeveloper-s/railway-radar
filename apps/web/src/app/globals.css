@@ -1,26 +1,93 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+/*
+ * RailRadar design tokens. The values come from the finished design in
+ * docs/design/RailRadar-design.html; the guide is docs/design/README.md.
+ * A token called --color-panel gives the classes bg-panel, text-panel,
+ * border-panel and so on.
+ */
+@theme {
+  /* surfaces */
+  --color-app: #0a0f14;
+  --color-panel: #0d131a;
+  --color-drawer: #0f161d;
+  --color-surface: #121a22;
+  --color-card: #151e27;
+  --color-chip: #18212a;
+  --color-glass: rgb(15 22 29 / 0.92);
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
+  /* lines and borders */
+  --color-line: #1a242e;
+  --color-line-bar: #1f2b36;
+  --color-line-strong: #22303c;
+  --color-line-hi: #26333f;
+  --color-line-btn: #2a3845;
+  --color-track: #34434f;
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+  /* text */
+  --color-ink: #eaf0f5;
+  --color-ink-soft: #b7c4d0;
+  --color-muted: #8c9dad;
+  --color-faint: #5e6f7f;
+
+  /* brand */
+  --color-accent: #ffce1f;
+  --color-accent-soft: #ffe27a;
+  --color-on-accent: #111111;
+
+  /* train status (blue = on time, orange = delayed, coral = cancelled) */
+  --color-ontime: #47b5ff;
+  --color-delayed: #ff9838;
+  --color-cancelled: #ff8a65;
+  --color-live: #4be39a;
+
+  /* seat status */
+  --color-avl: #4be39a;
+  --color-rac: #ffd27a;
+  --color-wl: #ff8a65;
+
+  /* the design switches between the phone and desktop layout at 900 px: desk: */
+  --breakpoint-desk: 900px;
+
+  --animate-live: live-pulse 1.6s ease-out infinite;
+  --animate-ring: ring-ping 1.8s ease-out infinite;
+
+  @keyframes live-pulse {
+    0% {
+      box-shadow: 0 0 0 0 rgb(75 227 154 / 0.6);
+    }
+    100% {
+      box-shadow: 0 0 0 8px rgb(75 227 154 / 0);
+    }
+  }
+
+  @keyframes ring-ping {
+    0% {
+      transform: scale(0.55);
+      opacity: 0.9;
+    }
+    100% {
+      transform: scale(1.35);
+      opacity: 0;
+    }
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+/* The font variables are set in layout.tsx by next/font. */
+@theme inline {
+  --font-display: var(--font-big-shoulders), system-ui, sans-serif;
+  --font-sans: var(--font-instrument-sans), system-ui, sans-serif;
+  --font-mono: var(--font-jetbrains-mono), ui-monospace, monospace;
+  --font-deva: var(--font-noto-devanagari), sans-serif;
+}
+
+/* Thin dark scrollbar used by the lists and the drawer. */
+@utility scroll-thin {
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-line-hi) transparent;
+}
+
+/* The app is dark only: tell the browser, so form controls and scrollbars match. */
+:root {
+  color-scheme: dark;
 }
