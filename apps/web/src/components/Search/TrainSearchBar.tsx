@@ -96,7 +96,7 @@ const TrainSearchBar = () => {
               No results founds
             </p>
             <p className="mt-2 text-sm leading-6 text-zinc-400">
-              We couldn't find any trains matching your search.
+              We could not find any trains matching your search.
             </p>
 
             <p className="mt-1 text-xs text-zinc-500">
