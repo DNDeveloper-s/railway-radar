@@ -1,23 +1,30 @@
 "use client";
 
 import useDebounce from "@/hooks/useDebounce";
+import { useTrainSearch } from "@/hooks/useTrainSearch";
 import { useState } from "react";
 import type React from "react";
 
+type Props = {
+  onSelectTrain: (trainNo: string) => void;
+};
 type Train = {
   train_name: string;
   train_no: string;
 };
-const TrainSearchBar = () => {
+
+const TrainSearchBar = ({ onSelectTrain }: Props) => {
   const [search, setSearch] = useState("");
-
+  const [inputValue, setInputValue] = useState("");
   const [selectIndex, setSelectIndex] = useState(-1);
+  const [open, setOpen] = useState(true);
 
-  const trainData: Train[] = [];
+  const debouncedvalue = useDebounce(search, 300);
+  const isSearchUpToDate = search === debouncedvalue;
+  const trainData: Train[] = useTrainSearch(debouncedvalue);
 
   const keyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (trainData.length === 0) return;
-
     if (e.key === "ArrowDown") {
       e.preventDefault();
 
@@ -25,7 +32,7 @@ const TrainSearchBar = () => {
         selectIndex < trainData.length - 1 ? selectIndex + 1 : 0;
 
       setSelectIndex(nextIndex);
-      setSearch(
+      setInputValue(
         `${trainData[nextIndex].train_name} - ${trainData[nextIndex].train_no}`,
       );
     } else if (e.key === "ArrowUp") {
@@ -35,42 +42,46 @@ const TrainSearchBar = () => {
         selectIndex > 0 ? selectIndex - 1 : trainData.length - 1;
 
       setSelectIndex(nextIndex);
-      setSearch(
+      setInputValue(
         `${trainData[nextIndex].train_name} - ${trainData[nextIndex].train_no}`,
       );
-    } else if (e.key === "Enter" && selectIndex !== -1) {
-      setSearch(
+    } else if (
+      e.key === "Enter" &&
+      selectIndex >= 0 &&
+      selectIndex < trainData.length
+    ) {
+      e.preventDefault();
+      setSelectIndex(-1);
+      console.log(selectIndex);
+      setOpen(false);
+      setInputValue(
         `${trainData[selectIndex].train_name} - ${trainData[selectIndex].train_no}`,
       );
-      setSelectIndex(-1);
+      onSelectTrain(trainData[selectIndex].train_no);
     }
   };
 
-  const debouncedvalue = useDebounce(search, 300);
-
   return (
     <div
-      className={`absolute top-4 left-4 right-4 z-50 md:left-1/2 md:right-auto md:w-[480px] md:-translate-x-1/2`}
+      className={`absolute top-4 left-4 right-4 z-50 md:left-1/2 md:right-auto md:w-120 md:-translate-x-1/2`}
     >
       <input
-        className={`${debouncedvalue ? "rounded-t-xl " : " rounded-xl"}  border-2 w-xl  text-sm font-medium  tracking-normal text-zinc-100 z-40   shadow-lg shadow-black/40 font-sans bg-zinc-900 p-3  border-black rounded-t-xl outline-none `}
+        className={`${debouncedvalue && open && isSearchUpToDate ? "rounded-t-xl " : " rounded-xl"}  border-2 w-xl  text-sm font-medium  tracking-normal text-zinc-100 z-40   shadow-lg shadow-black/40 font-sans bg-zinc-900 p-3  border-black rounded-t-xl outline-none `}
         type="text"
         placeholder="Search..."
-        value={search}
+        value={inputValue}
         onChange={(e) => {
           const value = e.target.value;
-
+          setOpen(true);
           setSearch(value);
-
-          if (value === "") {
-            setSelectIndex(-1);
-          }
+          setInputValue(value);
+          setSelectIndex(-1);
         }}
         onKeyDown={keyDown}
       />
 
       <div
-        className={`${debouncedvalue ? "visible " : "hidden "}absolute top-11      justify-start w-xl rounded-b-xl bg-zinc-900 text-sm font-medium  tracking-normal  shadow-2xl shadow-black/60 overflow-hidden z-50  "`}
+        className={`${debouncedvalue && open && isSearchUpToDate ? "visible " : "hidden "} absolute top-11 justify-start w-xl rounded-b-xl bg-zinc-900 text-sm font-medium  tracking-normal  shadow-2xl shadow-black/60 overflow-hidden z-50  "`}
       >
         {trainData.length > 0 ? (
           // If trains available, show this
@@ -78,9 +89,12 @@ const TrainSearchBar = () => {
             <p
               key={train.train_no}
               className={`${selectIndex === index ? "bg-zinc-600 text-white" : "text-white"} hover:bg-zinc-600 cursor-pointer mt-1 px-3 py-2 rounded-xl text-base`}
-              onClick={() =>
-                setSearch(`${train.train_name} - ${train.train_no}`)
-              }
+              onClick={() => {
+                setInputValue(`${train.train_name} - ${train.train_no}`);
+                onSelectTrain(train.train_no);
+                setSelectIndex(-1);
+                setOpen(false);
+              }}
             >
               {train.train_name} - {train.train_no}
             </p>
