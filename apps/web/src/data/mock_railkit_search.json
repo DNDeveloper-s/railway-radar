@@ -1,8 +1,37 @@
 {
   "success": true,
   "data": [
-    { "train_no": "12301", "train_name": "HOWRAH RAJDHANI" },
-    { "train_no": "12951", "train_name": "MUMBAI RAJDHANI" },
-    { "train_no": "22691", "train_name": "BENGALURU RAJDHANI" }
+    {
+      "train_name": "Rajdhani Express",
+      "train_no": "12951"
+    },
+    {
+      "train_name": "Shatabdi Express",
+      "train_no": "12002"
+    },
+    {
+      "train_name": "Duronto Express",
+      "train_no": "12213"
+    },
+    {
+      "train_name": "Garib Rath Express",
+      "train_no": "12203"
+    },
+    {
+      "train_name": "Vande Bharat Express",
+      "train_no": "22436"
+    },
+    {
+      "train_name": "Rajdhani Special",
+      "train_no": "12952"
+    },
+    {
+      "train_name": "Jan Shatabdi Express",
+      "train_no": "12003"
+    },
+    {
+      "train_name": "Intercity Express",
+      "train_no": "12401"
+    }
   ]
 }
