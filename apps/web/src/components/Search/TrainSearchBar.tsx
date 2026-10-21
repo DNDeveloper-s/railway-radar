@@ -52,7 +52,6 @@ const TrainSearchBar = ({ onSelectTrain }: Props) => {
     ) {
       e.preventDefault();
       setSelectIndex(-1);
-      console.log(selectIndex);
       setOpen(false);
       setInputValue(
         `${trainData[selectIndex].train_name} - ${trainData[selectIndex].train_no}`,
